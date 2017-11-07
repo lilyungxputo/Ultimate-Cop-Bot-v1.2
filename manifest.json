@@ -1,0 +1,38 @@
+{
+  "manifest_version": 2,
+
+  "name": "Ultimate Cop Bot",
+  "short_name": "UCB",
+  "description": "A Bot that auto fills and checksout on supremenewyork.com.",
+  "version": "1.2",
+  "author": "lilyungxputo",
+  "icons": {
+    "256": "img/icon.png"
+  },
+  "permissions": [
+    "tabs",
+    "*://*.supremenewyork.com/*",
+    "*://*.cloudfront.net/*",
+    "unlimitedStorage",
+    "storage",
+    "cookies",
+    "webRequest",
+    "webRequestBlocking"
+  ],
+  "options_page": "html/settings.html",
+  "browser_action": {
+    "default_popup": "html/popup.html"
+  },
+  "background": {
+    "scripts": ["dist/js/background.js"]
+  },
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "content_scripts": [
+    {
+      "matches": ["*://www.supremenewyork.com/*"],
+      "js": [
+        "dist/js/jquery-3.1.1.min.js",
+        "dist/js/supreme.js"]
+    }
+  ]
+}
